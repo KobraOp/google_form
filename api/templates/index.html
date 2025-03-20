@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Safety Survey - Win ₹500</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #ff6f00, #ffcc00);
+            color: white;
+            text-align: center;
+            animation: bg-animation 6s infinite alternate;
+        }
+        @keyframes bg-animation {
+            from { background: linear-gradient(120deg, #ff6f00, #ffcc00); }
+            to { background: linear-gradient(120deg, #ffcc00, #ff6f00); }
+        }
+        .container {
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            animation: jiggle 0.5s infinite alternate;
+        }
+        @keyframes jiggle {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+        h1 {
+            font-size: 30px;
+            font-weight: 700;
+            color: yellow;
+        }
+        .highlight {
+            font-weight: 700;
+            color: cyan;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 35px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background: #ffcc00;
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            animation: wiggle 1s infinite alternate;
+        }
+        @keyframes wiggle {
+            0% { transform: rotate(-2deg); }
+            100% { transform: rotate(2deg); }
+        }
+        .button:hover {
+            background: #ffdd33;
+            transform: scale(1.1);
+        }
+        /* Prize Popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 400px;
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            animation: popin 0.5s ease-in-out infinite alternate;
+        }
+        @keyframes popin {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            100% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+        .popup h2 {
+            color: #ff6f00;
+            font-size: 24px;
+        }
+        .popup button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background: #ff6f00;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .popup button:hover {
+            background: #ff851b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🚖 Driver Safety Survey - Win ₹500! 🎉</h1>
+        <h1>🚖 ड्राइवर सुरक्षा सर्वेक्षण - ₹500 जीतें! 🎉</h1>
+        <h2>🔹 Organized by: Sharda University | 🔹 शारदा विश्वविद्यालय द्वारा आयोजित</h2>
+        
+        <p>📢 <span class="highlight">Fill the survey & stand a chance to win ₹500!</span>  
+        <br>📢 <span class="highlight">सर्वेक्षण भरें और ₹500 जीतने का मौका पाएं!</span></p>
+        
+        <h2>🏆 Prize Details | 🏆 पुरस्कार की जानकारी</h2>
+        <p>🎁 <span class="highlight">Sharda University is awarding ₹500 to selected drivers!</span></p>
+        <p>🎁 <span class="highlight">शारदा विश्वविद्यालय चयनित ड्राइवरों को ₹500 दे रहा है!</span></p>
+        <p>🔍 A computer system is monitoring responses. | 🔍 एक कंप्यूटर प्रणाली उत्तरों की जाँच कर रही है।</p>
+        <p>📞 Winners will be contacted via phone. | 📞 विजेताओं को फोन पर सूचित किया जाएगा।</p>
+
+        <a id="surveyButton" href="YOUR_GOOGLE_FORM_LINK_HERE" class="button">🚀 Fill the Survey Now! | 🚀 सर्वेक्षण अभी भरें!</a>
+
+        <div class="footer">
+            <p>🔒 Your privacy is protected. | 🔒 आपकी गोपनीयता सुरक्षित है।</p>
+            <p>© 2025 Sharda University | © 2025 शारदा विश्वविद्यालय</p>
+        </div>
+    </div>
+
+    <!-- Prize Popup -->
+    <div id="prizePopup" class="popup">
+        <h2>🎉 Win ₹500! | 🎉 ₹500 जीतें!</h2>
+        <p>Complete the survey & you could be the next winner!  
+        <br>सर्वेक्षण पूरा करें और आप अगले विजेता हो सकते हैं!</p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+
+    <script>
+        let popupOpen = true;
+        function showPopup() {
+            if (popupOpen) {
+                document.getElementById("prizePopup").style.display = "block";
+                setTimeout(showPopup, 5000); // Keep showing until form is clicked
+            }
+        }
+        function closePopup() {
+            document.getElementById("prizePopup").style.display = "none";
+        }
+        document.getElementById("surveyButton").addEventListener("click", function() {
+            popupOpen = false; // Stop popups once the form button is clicked
+            closePopup();
+        });
+        setTimeout(showPopup, 3000);
+    </script>
+
+</body>
+</html>
